@@ -1,0 +1,96 @@
+digraph KijaniKiosk {
+    graph [
+        label="KijaniKiosk Cloud Network Topology",
+        labelloc="t",
+        fontsize=20,
+        rankdir=TB,
+        pad=0.3,
+        nodesep=0.5,
+        ranksep=0.7
+    ];
+
+    node [
+        shape=box,
+        style="rounded,filled",
+        fontsize=11,
+        margin=0.18
+    ];
+
+    edge [
+        fontsize=9,
+        color="#475569",
+        arrowsize=0.8
+    ];
+
+    internet [
+        label="Internet / Customers",
+        fillcolor="#DBEAFE",
+        color="#2563EB"
+    ];
+
+    igw [
+        label="Internet Gateway",
+        fillcolor="#FEF3C7",
+        color="#D97706"
+    ];
+
+    subgraph cluster_vpc {
+        label="KijaniKiosk Virtual Private Cloud (VPC)";
+        fontsize=15;
+        color="#64748B";
+        style="rounded";
+        margin=20;
+
+        subgraph cluster_public {
+            label="Public Subnet";
+            color="#16A34A";
+            style="rounded,filled";
+            fillcolor="#F0FDF4";
+
+            lb [
+                label="Public Load Balancer\nHTTPS traffic",
+                fillcolor="#DCFCE7",
+                color="#16A34A"
+            ];
+
+            nat [
+                label="NAT Gateway\nOutbound access only",
+                fillcolor="#FEF3C7",
+                color="#D97706"
+            ];
+        }
+
+        subgraph cluster_app {
+            label="Private Application Subnet";
+            color="#2563EB";
+            style="rounded,filled";
+            fillcolor="#EFF6FF";
+
+            app [
+                label="KijaniKiosk App Servers\nNo direct inbound internet access",
+                fillcolor="#DBEAFE",
+                color="#2563EB"
+            ];
+        }
+
+        subgraph cluster_db {
+            label="Private Database Subnet";
+            color="#7C3AED";
+            style="rounded,filled";
+            fillcolor="#F5F3FF";
+
+            db [
+                label="Database\nAccess restricted to app servers",
+                fillcolor="#EDE9FE",
+                color="#7C3AED"
+            ];
+        }
+    }
+
+    internet -> igw [label="HTTPS"];
+    igw -> lb [label="Public route"];
+    lb -> app [label="Forward requests"];
+    app -> db [label="Database traffic"];
+    app -> nat [label="Outbound updates"];
+    nat -> igw [label="Outbound route"];
+}
