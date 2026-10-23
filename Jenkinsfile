@@ -133,8 +133,8 @@ pipeline {
                             "always-auth=true" \
                             > .npmrc
 
-                        npm publish "dist/$ARTIFACT" \
-                            --registry="$NEXUS_REGISTRY"
+                        npm publish "./dist/$ARTIFACT" \
+                        --registry="$NEXUS_REGISTRY"
 
                         rm -f .npmrc
                         trap - EXIT HUP INT TERM
