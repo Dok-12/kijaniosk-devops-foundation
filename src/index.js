@@ -13,5 +13,3 @@ function calculateTotal(amount, fee = 0) {
 }
 
 module.exports = { calculateTotal };
-
-function deliberateLintFault( {
