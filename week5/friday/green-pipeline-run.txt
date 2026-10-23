@@ -1,0 +1,44 @@
+KijaniKiosk Week 5 CI Pipeline — Green Run Evidence
+
+Overall result: SUCCESS
+Jenkins job: KijaniKiosk-Week5-CI
+Git branch: feature/week5-ci-pipeline
+Git commit: a6cc4e3eeb6471ce35eaa7f652ea15e902a60195
+
+Package: kijanikiosk-payments
+Published version: 1.0.0-a6cc4e3
+Artifact: kijanikiosk-payments-1.0.0-a6cc4e3.tgz
+Artifact SHA-1 (npm shasum): 3571bbdf2e27599ddd569984391bf0b1c496ab32
+
+Environment:
+- Node.js: v22.16.0
+- npm: 10.9.2
+- Jenkins pipeline uses a Docker agent.
+- Pipeline timeout is configured for 10 minutes.
+
+Stage results:
+1. Lint: PASSED
+2. Build: PASSED
+3. Parallel Verification: PASSED
+   - Unit tests: 5 passed, 0 failed.
+   - npm audit: 0 vulnerabilities reported.
+4. Archive and Fingerprint: PASSED
+5. Publish to Nexus: PASSED
+
+Publication verification:
+- User confirmed that version 1.0.0-a6cc4e3 is listed in the
+  week5-npm-releases Nexus repository.
+
+Post-build:
+- Workspace cleanup completed successfully.
+- Jenkins masked the Nexus password in the console output.
+- Shell tracing was disabled during the authenticated publishing step.
+
+Timing:
+- First listed pipeline stage began at approximately 12:55:16.
+- Publishing succeeded at approximately 12:55:23.
+- These timestamps cover the main pipeline stages, not initial checkout
+  and Docker agent startup.
+
+Evidence source: Jenkins console output from the successful build and
+manual confirmation of the package version in Nexus.
