@@ -133,8 +133,9 @@ pipeline {
                             "always-auth=true" \
                             > .npmrc
 
+                        echo "FAULT INJECTION 5: publishing to a deliberately nonexistent Nexus repository"
                         npm publish "./dist/$ARTIFACT" \
-                        --registry="$NEXUS_REGISTRY"
+                        --registry="http://week5-nexus:8081/repository/week5-npm-releases-fault-test/"
 
                         rm -f .npmrc
                         trap - EXIT HUP INT TERM
