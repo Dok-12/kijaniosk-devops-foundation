@@ -53,6 +53,8 @@ pipeline {
                 sh '''
                     set -eu
                     echo "Building ${PACKAGE_NAME}@${PACKAGE_VERSION}"
+                    echo "FAULT INJECTION 2: deliberately failing the Build stage"
+                    exit 42
 
                     npm version "$PACKAGE_VERSION" \
                         --no-git-tag-version \
