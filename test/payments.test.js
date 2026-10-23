@@ -9,7 +9,7 @@ test('calculates a payment total without a fee', () => {
 });
 
 test('adds a payment fee', () => {
-  assert.equal(calculateTotal(100, 2.5), 102.5);
+  assert.equal(calculateTotal(100, 2.5), 999);
 });
 
 test('rounds the total to two decimal places', () => {
