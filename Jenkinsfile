@@ -94,8 +94,6 @@ pipeline {
             steps {
                 sh '''
                     set -eu
-                    echo "FAULT INJECTION 4: deliberately failing archive validation"
-                    test -s "dist/intentional-missing-artifact.tgz"
                     test -s "dist/$ARTIFACT"
                     tar -tzf "dist/$ARTIFACT"
                     tar -xOzf "dist/$ARTIFACT" package/package.json
