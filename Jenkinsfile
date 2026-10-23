@@ -1,7 +1,7 @@
 pipeline {
     agent {
         docker {
-            image 'node:22.16.0-bookworm-slim'
+            image 'week5-node-git:22.16.0-bookworm-slim'
             args '--network week5-ci'
             reuseNode true
         }
