@@ -1,0 +1,22 @@
+KijaniKiosk Week 5 CI Pipeline Overview
+
+The Jenkins pipeline automates the validation and publication of the
+kijanikiosk-payments package.
+
+Pipeline flow:
+1. Lint checks JavaScript syntax.
+2. Build creates a tarball whose version combines the package semantic
+   version and the checked-out Git commit SHA.
+3. Parallel Verification runs unit tests and an npm security audit.
+4. Archive and Fingerprint validates and archives the tarball.
+5. Publish to Nexus publishes the package to the week5-npm-releases
+   hosted npm repository using a Jenkins-managed credential.
+
+The pipeline uses a pinned Node.js Docker image and has a ten-minute
+timeout. Its post-build actions report the outcome and clean the
+workspace.
+
+The first confirmed published version is 1.0.0-a6cc4e3. A later commit
+should produce a distinct version because the Git SHA is part of the
+package version. The second version must be confirmed in Nexus after
+the Jenkins build succeeds.
