@@ -39,10 +39,7 @@ pipeline {
         stage('Build') {
             steps {
                 script {
-                    env.GIT_SHA = sh(
-                        script: 'git rev-parse --short=7 HEAD',
-                        returnStdout: true
-                    ).trim()
+                    env.GIT_SHA = env.GIT_COMMIT.take(7)
 
                     env.BASE_VERSION = sh(
                         script: "node -p \"require('./package.json').version\"",
