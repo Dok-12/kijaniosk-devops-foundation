@@ -1,0 +1,72 @@
+WEEK 8 - KUBERNETES SERVICE VERIFICATION
+========================================
+
+Service:
+NAME                  TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE   SELECTOR
+kk-payments-service   NodePort   10.102.17.22   <none>        3001:30001/TCP   22m   app=kk-payments
+
+Service details:
+Name:                     kk-payments-service
+Namespace:                default
+Labels:                   app=kk-payments
+Annotations:              <none>
+Selector:                 app=kk-payments
+Type:                     NodePort
+IP Family Policy:         SingleStack
+IP Families:              IPv4
+IP:                       10.102.17.22
+IPs:                      10.102.17.22
+Port:                     http  3001/TCP
+TargetPort:               3001/TCP
+NodePort:                 http  30001/TCP
+Endpoints:                10.244.0.7:3001,10.244.0.8:3001
+Session Affinity:         None
+External Traffic Policy:  Cluster
+Internal Traffic Policy:  Cluster
+Events:                   <none>
+
+Service endpoints:
+NAME                  ENDPOINTS                         AGE
+kk-payments-service   10.244.0.7:3001,10.244.0.8:3001   22m
+
+NodePort health endpoint:
+HTTP/1.1 200 OK
+Content-Type: application/json
+Date: Tue, 03 Nov 2026 18:58:09 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+{"status":"healthy","version":"1.0.0"}
+In-cluster DNS resolution:
+Server:		10.96.0.10
+Address:	10.96.0.10:53
+
+Name:	kk-payments-service.default.svc.cluster.local
+Address: 10.102.17.22
+
+
+pod "dns-check" deleted from default namespace
+
+In-cluster HTTP health endpoint:
+  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+HTTP/1.1 200 OK
+  0      0   0      0   0      0      0      0                              0100     38   0     38   0      0  10044      0                              0100     38   0     38   0      0   9900      0                              0100     38   0     38   0      0   9793      0                              0
+Content-Type: application/json
+Date: Tue, 03 Nov 2026 18:58:15 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+{"status":"healthy","version":"1.0.0"}  % Total    % Received % Xferd  Average Speed  Time    Time    Time   Current
+                                 Dload  Upload  Total   Spent   Left   Speed
+HTTP/1.1 200 OK
+  0      0   0      0   0      0      0      0                              0100     38   0     38   0      0  10044      0                              0100     38   0     38   0      0   9900      0                              0100     38   0     38   0      0   9793      0                              0
+Content-Type: application/json
+Date: Tue, 03 Nov 2026 18:58:15 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+{"status":"healthy","version":"1.0.0"}pod "http-check" deleted from default namespace

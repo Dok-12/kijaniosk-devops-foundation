@@ -26,7 +26,7 @@ spec:
           type: RuntimeDefault
       containers:
         - name: kk-payments
-          image: DOCKERHUB_IMAGE_PLACEHOLDER
+          image: lendok/kk-payments:1.0.0-7c61f7c
           imagePullPolicy: Always
           ports:
             - name: http

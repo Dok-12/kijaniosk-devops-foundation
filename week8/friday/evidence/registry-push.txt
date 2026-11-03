@@ -1,0 +1,38 @@
+WEEK 8 - DOCKER HUB REGISTRY VERIFICATION
+=========================================
+
+Image reference:
+lendok/kk-payments:1.0.0-7c61f7c
+
+Registry manifest:
+{
+   "schemaVersion": 2,
+   "mediaType": "application/vnd.oci.image.index.v1+json",
+   "manifests": [
+      {
+         "mediaType": "application/vnd.oci.image.manifest.v1+json",
+         "size": 1996,
+         "digest": "sha256:81a63c18c13d2afbf2b034167e04abf4e9997efc8904a0b3cefec276fdeff58d",
+         "platform": {
+            "architecture": "amd64",
+            "os": "linux"
+         }
+      },
+      {
+         "mediaType": "application/vnd.oci.image.manifest.v1+json",
+         "size": 837,
+         "digest": "sha256:a3be1e9bbcdf0f3bc13ef944793774dae39a0d1ac89aca02974afa1665103860",
+         "platform": {
+            "architecture": "unknown",
+            "os": "unknown"
+         }
+      }
+   ]
+}
+
+Locally pulled image verification:
+ID=sha256:f93df6360107ef89a7a38db5ffbb240cc017818218c1ae09c363b1a491745254 USER=kijani SIZE=229942003
+
+Image listing:
+IMAGE                              ID             DISK USAGE   CONTENT SIZE   EXTRA
+lendok/kk-payments:1.0.0-7c61f7c   f93df6360107        230MB         56.6MB        
