@@ -1,0 +1,11 @@
+.git
+.gitignore
+node_modules
+npm-debug.log
+*.log
+.env
+.npmrc
+test
+week5
+week8
+dist

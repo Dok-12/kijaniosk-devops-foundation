@@ -1,0 +1,63 @@
+WEEK 8 - KUBERNETES DEPLOYMENT VERIFICATION
+==========================================
+
+Deployment status:
+NAME                     READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS    IMAGES                             SELECTOR
+kk-payments-deployment   2/2     2            2           24m   kk-payments   lendok/kk-payments:1.0.0-7c61f7c   app=kk-payments
+
+Deployment configuration:
+Name:                   kk-payments-deployment
+Namespace:              default
+CreationTimestamp:      Tue, 03 Nov 2026 21:32:04 +0300
+Labels:                 app=kk-payments
+                        component=payments
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=kk-payments
+Replicas:               2 desired | 2 updated | 2 total | 2 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=kk-payments
+           component=payments
+  Containers:
+   kk-payments:
+    Image:      lendok/kk-payments:1.0.0-7c61f7c
+    Port:       3001/TCP (http)
+    Host Port:  0/TCP (http)
+    Limits:
+      cpu:     500m
+      memory:  128Mi
+    Requests:
+      cpu:      100m
+      memory:   64Mi
+    Liveness:   http-get http://:http/health delay=0s timeout=2s period=10s successThreshold=1 failureThreshold=3
+    Readiness:  http-get http://:http/health delay=0s timeout=2s period=5s successThreshold=1 failureThreshold=3
+    Startup:    http-get http://:http/health delay=0s timeout=1s period=5s successThreshold=1 failureThreshold=12
+    Environment:
+      NODE_ENV:    production
+      PORT:        3001
+    Mounts:        <none>
+  Volumes:         <none>
+  Node-Selectors:  <none>
+  Tolerations:     <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Progressing    True    NewReplicaSetAvailable
+  Available      True    MinimumReplicasAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   kk-payments-deployment-7b8f897d45 (2/2 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  24m   deployment-controller  Scaled up replica set kk-payments-deployment-7b8f897d45 from 0 to 2
+
+Application Pods:
+NAME                                      READY   STATUS    RESTARTS   AGE   IP           NODE       NOMINATED NODE   READINESS GATES
+kk-payments-deployment-7b8f897d45-c98fl   1/1     Running   0          12m   10.244.0.8   minikube   <none>           <none>
+kk-payments-deployment-7b8f897d45-tkxq9   1/1     Running   0          13m   10.244.0.7   minikube   <none>           <none>
+
+Registry Secret metadata ():
+NAME                          TYPE                             DATA   AGE
+kijani-registry-credentials   kubernetes.io/dockerconfigjson   1      6h23m

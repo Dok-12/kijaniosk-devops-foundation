@@ -1,0 +1,25 @@
+IMAGE               ID             DISK USAGE   CONTENT SIZE   EXTRA
+kk-payments:local   db2b95c945f2        230MB         56.6MB   U
+Image size: 229941837 bytes | User: kijani
+56330430
+IMAGE          CREATED          CREATED BY                                      SIZE      COMMENT
+db2b95c945f2   21 minutes ago   CMD ["node" "src/server.js"]                    0B        buildkit.dockerfile.v0
+<missing>      21 minutes ago   HEALTHCHECK {Test:[CMD-SHELL node -e "requir…   0B        buildkit.dockerfile.v0
+<missing>      21 minutes ago   EXPOSE [3001/tcp]                               0B        buildkit.dockerfile.v0
+<missing>      21 minutes ago   USER kijani                                     0B        buildkit.dockerfile.v0
+<missing>      21 minutes ago   COPY --chown=10001:10001 src/ ./src/ # build…   20.5kB    buildkit.dockerfile.v0
+<missing>      21 minutes ago   RUN /bin/sh -c npm ci --omit=dev     && npm …   2.99MB    buildkit.dockerfile.v0
+<missing>      21 minutes ago   COPY --chown=10001:10001 package.json packag…   16.4kB    buildkit.dockerfile.v0
+<missing>      21 minutes ago   RUN /bin/sh -c addgroup -S -g 10001 kijani  …   32.8kB    buildkit.dockerfile.v0
+<missing>      21 minutes ago   WORKDIR /app                                    8.19kB    buildkit.dockerfile.v0
+<missing>      21 minutes ago   ENV PORT=3001                                   0B        buildkit.dockerfile.v0
+<missing>      21 minutes ago   ENV NODE_ENV=production                         0B        buildkit.dockerfile.v0
+<missing>      17 months ago    CMD ["node"]                                    0B        buildkit.dockerfile.v0
+<missing>      17 months ago    ENTRYPOINT ["docker-entrypoint.sh"]             0B        buildkit.dockerfile.v0
+<missing>      17 months ago    COPY docker-entrypoint.sh /usr/local/bin/ # …   20.5kB    buildkit.dockerfile.v0
+<missing>      17 months ago    RUN /bin/sh -c apk add --no-cache --virtual …   5.47MB    buildkit.dockerfile.v0
+<missing>      17 months ago    ENV YARN_VERSION=1.22.22                        0B        buildkit.dockerfile.v0
+<missing>      17 months ago    RUN /bin/sh -c addgroup -g 1000 node     && …   156MB     buildkit.dockerfile.v0
+<missing>      17 months ago    ENV NODE_VERSION=22.16.0                        0B        buildkit.dockerfile.v0
+<missing>      17 months ago    CMD ["/bin/sh"]                                 0B        buildkit.dockerfile.v0
+<missing>      17 months ago    ADD alpine-minirootfs-3.22.0-x86_64.tar.gz /…   8.98MB    buildkit.dockerfile.v0

@@ -1,0 +1,8 @@
+=== Container status ===
+Status: running | Health: healthy | User: kijani
+
+=== Health endpoint ===
+{"status":"healthy","version":"1.0.0"}
+
+=== TypeScript compiler ===
+TypeScript compiler absent
